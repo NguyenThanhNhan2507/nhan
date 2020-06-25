@@ -11,13 +11,16 @@ list-style: none;
 </head>
 <body>
 <h1>INSERT DATA TO DATABASE</h1>
-<h2>Enter data into student table</h2>
+<h2>Enter data into customers table</h2>
 <ul>
     <form name="InsertData" action="InsertData.php" method="POST" >
-<li>Student ID:</li><li><input type="text" name="StudentID" /></li>
-<li>Full Name:</li><li><input type="text" name="fname" /></li>
-<li>Email:</li><li><input type="text" name="email" /></li>
-<li>Class:</li><li><input type="text" name="classname" /></li>
+<li>Customer ID:</li><li><input type="text" name="customerID" /></li>
+<li>Email:</li><li><input type="text" name="Email" /></li>
+<li>First Name:</li><li><input type="text" name="FirstName" /></li>
+<li>Last Name:</li><li><input type="text" name="LastName" /></li>
+<li>Street:</li><li><input type="text" name="Street" /></li>
+<li>City:</li><li><input type="text" name="City" /></li>
+<li>Phone:</li><li><input type="text" name="Phone" /></li>
 <li><input type="submit" /></li>
 </form>
 </ul>
@@ -52,11 +55,31 @@ if($pdo === false){
 //$stmt->bindParam(':email', 'Linhhh@fpt.edu.vn');
 //$stmt->bindParam(':class', 'GCD018');
 //$stmt->execute();
-//$sql = "INSERT INTO student(stuid, fname, email, classname) VALUES('SV02', 'Hong Thanh','thanhh@fpt.edu.vn','GCD018')";
-$sql = "INSERT INTO student(stuid, fname, email, classname)"
-        . " VALUES('$_POST[StudentID]','$_POST[fname]','$_POST[email]','$_POST[classname]')";
+//$sql = "INSERT INTO student(CustomerID ,Email ,Password, FirstName,LastName,City,Street,Phone) VALUES('1','nhandaica125@gmail.com' '123456','Nhan','Nguyen','VietNam','Ly Thuong Kiet','09005852221')";
+$sql = "INSERT INTO student(CustomerID ,Email ,Password, FirstName,LastName,City,Street,Phone)"
+        . " VALUES('$_POST[CustomerID]','$_POST[Email]','$_POST[PassWord]','$_POST[FirstName]','$_POST[LastName]','$_POST[City]','$_POST[Street]','$_POST[Phone]')";
 $stmt = $pdo->prepare($sql);
 //$stmt->execute();
+$sql = "INSERT INTO `themes` (`theme_id`, `theme_title`)"
+    ." VALUES(
+(1, 'Words & Phrases'),
+(2, 'Love & Romance'),
+(3, 'Flowers & Plants'),
+(4, 'Trees'),
+(5, 'Animals'),
+(7, 'Nature & Landscapes'),
+(8, 'Tropical'),
+(9, 'Music'),
+(10, 'Games & Fantasy'),
+(11, 'Sports & Fitness'),
+(12, 'Cities & Buildings'),
+(13, 'Movies & TV'),
+(14, 'Stars'),
+(15, 'Glowing'),
+(16, 'Disney'),
+(17, '3D');
+)";
+
  if (is_null($_POST[StudentID])) {
    echo "StudentID must be not null";
  }
